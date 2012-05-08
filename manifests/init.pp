@@ -19,6 +19,10 @@ class dnsmasq($only_dns = true) {
         notify => Exec["reload-dnsmasq"]
     }
 
+    Host <| |> {
+        notify => Exec["reload-dnsmasq"]
+    }
+
     exec { "reload-dnsmasq":
         command => "/usr/sbin/service dnsmasq restart",
         refreshonly => true,
